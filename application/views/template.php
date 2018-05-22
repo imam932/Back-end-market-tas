@@ -21,7 +21,7 @@
   <link href="<?= base_url() ?>assets/dist/css/sb-admin-2.css" rel="stylesheet">
 
  <!-- Custom CSS -->
- <link href="<?= base_url() ?>assets/dist/css/compiled.min.css" rel="stylesheet">
+ <!-- <link href="<?= base_url() ?>assets/dist/css/compiled.min.css" rel="stylesheet"> -->
  <link href="<?= base_url() ?>assets/dist/css/styles.css" rel="stylesheet">
 
   <!-- Custom Fonts -->
@@ -90,6 +90,15 @@
           </li>
           <li>
             <a href="<?= base_url() ?>Inventaris"><i class="fa fa-dashboard fa-fw"></i> Inventaris</a>
+          </li>
+          <li>
+            <a href="<?= base_url() ?>Karyawan"><i class="fa fa-dashboard fa-fw"></i> Karyawan</a>
+          </li>
+          <li>
+            <a href="<?= base_url() ?>User"><i class="fa fa-dashboard fa-fw"></i> User</a>
+          </li>
+          <li>
+            <a href="<?= base_url() ?>Produk"><i class="fa fa-dashboard fa-fw"></i> Produk</a>
           </li>
           <!-- <?php if ($this->session->userdata('logged_in')['level'] == "admin") { ?>
             <li>
