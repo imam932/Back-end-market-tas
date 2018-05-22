@@ -88,6 +88,9 @@
           <li>
             <a href="<?= base_url() ?>Bahan"><i class="fa fa-dashboard fa-fw"></i> Bahan</a>
           </li>
+          <li>
+            <a href="<?= base_url() ?>Inventaris"><i class="fa fa-dashboard fa-fw"></i> Inventaris</a>
+          </li>
           <!-- <?php if ($this->session->userdata('logged_in')['level'] == "admin") { ?>
             <li>
               <a href="<?= base_url() ?>Driver"><i class="fa fa-dashboard fa-fw"></i> Driver</a>

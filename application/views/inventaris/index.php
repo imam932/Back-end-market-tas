@@ -1,7 +1,7 @@
 
 <?php if ($this->session->userdata('logged_in')['level'] == "admin") { ?>
 	<div class="container">
-		<a href="<?= base_url().'Bahan/insert'?>" class="btn btn-primary">INPUT DATA <?php echo $judul; ?></a>
+		<a href="<?= base_url().'Inventaris/insert'?>" class="btn btn-primary">INPUT DATA <?php echo $judul; ?></a>
 	</div>
 <?php } ?>
 
@@ -17,32 +17,28 @@
 				<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables">
 					<thead>
 						<tr>
-							<th>Nama Bahan</th>
-							<th>Jenis</th>
+							<th>Nama inventaris</th>
 							<th>Jumlah</th>
-							<th>Warna</th>
-							<th>Satuan</th>
+							<th>Usia</th>
 							<th>Harga</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
-						foreach ($bahan as $val) { ?>
+						foreach ($inventaris as $val) { ?>
 							<tr class="odd gradeX">
-								<td><?= $val->nama_bahan  ?></td>
-								<td><?= $val->jenis  ?></td>
+								<td><?= $val->nama_inventaris  ?></td>
 								<td><?= $val->jumlah  ?></td>
-								<td><?= $val->warna  ?></td>
-								<td><?= $val->satuan  ?></td>
+								<td><?= $val->usia_bulan  ?> Bulan</td>
 								<td>Rp. <?= $val->harga  ?></td>
 								<td>
 									<div class="btn-group" role="group">
-	                  <a href="<?= base_url().'Bahan/edit/'.$val->id_bahan ?>" class="btn btn-warning btn-sm">
+	                  <a href="<?= base_url().'Inventaris/edit/'.$val->id_inventaris ?>" class="btn btn-warning btn-sm">
 	                    Edit
 	                  </a>
 
-	                  <a href="<?= base_url().'Bahan/delete/'.$val->id_bahan ?>" class="btn btn-danger btn-sm">
+	                  <a href="<?= base_url().'Inventaris/delete/'.$val->id_inventaris ?>" class="btn btn-danger btn-sm">
 	                    Delete
 	                  </a>
 	                </div>
