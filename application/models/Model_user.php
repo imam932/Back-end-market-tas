@@ -1,4 +1,4 @@
-<?php
+	<?php
 class Model_user extends CI_Model
 {
 
@@ -45,6 +45,15 @@ class Model_user extends CI_Model
 	public function delete($id){
 		$this->db->where('id_user', $id);
 		$this->db->delete('user');
+	}
+
+	public function login(){
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+
+		$data = $this->db->get_where('user', array('username' => $username, 'password' => $password));
+
+		return $data->first_row();
 	}
 }
 
