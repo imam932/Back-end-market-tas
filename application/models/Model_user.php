@@ -21,9 +21,10 @@ class Model_user extends CI_Model
 			'no_hp'				=> $this->input->post('no_hp'),
 			'jenis_kelamin'	=> $this->input->post('jenis_kelamin'),
 			'alamat' 			=> $this->input->post('alamat'),
-			'username' 		=> $this->input->post('username'),
+			'email' 		=> $this->input->post('email'),
 			'password' 		=> $this->input->post('password'),
-			'level' 		=> $this->input->post('level')
+			'level' 		=> $this->input->post('level'),
+			'code' 		=> $this->input->post('code')
 		);
 		$this->db->insert('user', $data);
 	}
@@ -34,9 +35,10 @@ class Model_user extends CI_Model
 			'no_hp'				=> $this->input->post('no_hp'),
 			'jenis_kelamin'	=> $this->input->post('jenis_kelamin'),
 			'alamat' 			=> $this->input->post('alamat'),
-			'username' 		=> $this->input->post('username'),
+			'email' 		=> $this->input->post('email'),
 			'password' 		=> $this->input->post('password'),
-			'level' 		=> $this->input->post('level')
+			'level' 		=> $this->input->post('level'),
+			'code' 		=> $this->input->post('code')
 		);
 		$this->db->where('id_user', $id);
 		$this->db->update('user', $data);
@@ -48,10 +50,10 @@ class Model_user extends CI_Model
 	}
 
 	public function login(){
-		$username = $this->input->post('username');
+		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 
-		$data = $this->db->get_where('user', array('username' => $username, 'password' => $password));
+		$data = $this->db->get_where('user', array('email' => $email, 'password' => $password));
 
 		return $data->first_row();
 	}

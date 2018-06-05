@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2018 at 04:43 AM
+-- Generation Time: May 28, 2018 at 03:34 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `tas`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `absensi`
+--
+
+CREATE TABLE `absensi` (
+  `id_absensi` int(11) NOT NULL,
+  `tanggal` date DEFAULT NULL,
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `absensi`
+--
+
+INSERT INTO `absensi` (`id_absensi`, `tanggal`, `id_user`) VALUES
+(1, '2018-05-27', 2),
+(2, '2018-05-27', 10),
+(3, '2018-05-26', 9);
 
 -- --------------------------------------------------------
 
@@ -46,7 +67,8 @@ INSERT INTO `bahan` (`id_bahan`, `nama_bahan`, `jenis`, `jumlah`, `warna`, `satu
 (3, 'levis B', 'kain', 15, 'hitam', 'gulung', 195000),
 (4, 'lapis tipe A', 'kain', 10, 'hitam', 'gulung', 100000),
 (5, 'resleting', 'bahan B', 100, 'N', 'bundle', 5000),
-(6, 'Canvas BB', 'kain kanvas bagus', 20, 'hijau', 'meter', 25000);
+(6, 'Canvas BB', 'kain kanvas bagus', 20, 'hijau', 'meter', 25000),
+(9, NULL, NULL, 5, NULL, NULL, 150000);
 
 -- --------------------------------------------------------
 
@@ -73,7 +95,8 @@ INSERT INTO `inventaris` (`id_inventaris`, `nama_inventaris`, `jumlah`, `usia_bu
 (4, 'gunting', 3, 3, 5000),
 (5, 'meteran', 2, 24, 5000),
 (6, 'laptop', 1, 60, 6000000),
-(7, 'smartphone', 1, 60, 2500000);
+(7, 'smartphone', 1, 60, 2500000),
+(8, 'Meja Jahit', 5, 10, 150000);
 
 -- --------------------------------------------------------
 
@@ -97,7 +120,8 @@ INSERT INTO `karyawan` (`id_karyawan`, `nama_karyawan`, `bagian`, `telp`) VALUES
 (2, 'paijo', 'Gudang', '08239876t2'),
 (3, 'seinse', 'produksi', '01238734'),
 (4, 'maina', 'produksi', '0987349823'),
-(5, 'hengki', 'produksi', '9283764');
+(5, 'hengki', 'produksi', '9283764'),
+(7, 'Samuel', 'produksi', '085730269939');
 
 -- --------------------------------------------------------
 
@@ -315,30 +339,41 @@ INSERT INTO `transaksi` (`id_transaksi`, `tanggal`, `karyawan_id_karyawan`, `pen
 --
 
 CREATE TABLE `user` (
-  `id_user` int(200) NOT NULL,
-  `nama_user` varchar(200) NOT NULL,
-  `no_hp` int(200) NOT NULL,
-  `jenis_kelamin` tinyint(1) NOT NULL,
-  `alamat` varchar(200) NOT NULL,
-  `username` varchar(200) NOT NULL,
-  `password` varchar(200) NOT NULL,
-  `level` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_user` int(11) NOT NULL,
+  `nama_user` varchar(55) DEFAULT NULL,
+  `no_hp` int(11) DEFAULT NULL,
+  `jenis_kelamin` tinyint(1) DEFAULT NULL,
+  `alamat` text,
+  `email` varchar(45) DEFAULT NULL,
+  `password` varchar(10) DEFAULT NULL,
+  `level` varchar(15) DEFAULT NULL,
+  `code` varchar(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `nama_user`, `no_hp`, `jenis_kelamin`, `alamat`, `username`, `password`, `level`) VALUES
-(1, 'satria B', 23987482, 1, 'mvdlk', '983i3nj', '', 'user'),
-(2, 'saya', 98765, 0, 'malang', 'admin@', 'admin', 'admin'),
-(3, 'nawawi', 234598765, 1, 'malang', 'admin@1', 'admin', 'user'),
-(4, 'nana', 889987654, 0, 'malang', 'admin12', 'admin', 'user'),
-(5, 'user', 98765, 1, 'user', 'user', 'user', 'user');
+INSERT INTO `user` (`id_user`, `nama_user`, `no_hp`, `jenis_kelamin`, `alamat`, `email`, `password`, `level`, `code`) VALUES
+(1, 'satria B', 23987482, 1, 'mvdlk', 'satriab@gmail.com', '', 'user', 'SA'),
+(2, 'saya', 98765, 0, 'malang', 'admin@gmail.com', 'admin', 'admin', 'AD'),
+(3, 'nawawi', 234598765, 1, 'malang', 'nawawi@gmail.com', 'admin', 'user', 'NA'),
+(5, 'user', 98765, 1, 'user', 'user@gmail.com', 'user', 'user', 'US'),
+(6, 'Satria Bagus', 9876, 1, 'malang', 'satria@gmail.com', '', 'logistik', 'SA'),
+(7, 'nisa', 2147483647, 0, 'malang', 'nisa@gmail.com', 'admin', 'akuntansi', 'NI'),
+(9, 'imam', 2147483647, 1, 'malang', 'imam@gmail.com', 'admin', 'hrd', 'IM'),
+(10, 'syarif', 2147483647, 1, 'sukodono', 'syarif@gmail.com', 'admin', 'logistik', 'SY');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `absensi`
+--
+ALTER TABLE `absensi`
+  ADD PRIMARY KEY (`id_absensi`,`id_user`),
+  ADD KEY `fk_absensi_user1_idx` (`id_user`);
 
 --
 -- Indexes for table `bahan`
@@ -430,20 +465,25 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `absensi`
+--
+ALTER TABLE `absensi`
+  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `bahan`
 --
 ALTER TABLE `bahan`
-  MODIFY `id_bahan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_bahan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `inventaris`
 --
 ALTER TABLE `inventaris`
-  MODIFY `id_inventaris` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_inventaris` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `modal`
 --
@@ -493,10 +533,16 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `absensi`
+--
+ALTER TABLE `absensi`
+  ADD CONSTRAINT `fk_absensi_user1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `pembelian_bahan_baku`

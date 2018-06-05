@@ -37,8 +37,8 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>Username</label>
-                  <input class="form-control" type="text" name="username" value ="<?= $user[0]->username ?>">
+                  <label>E-mail</label>
+                  <input class="form-control" type="text" name="email" value ="<?= $user[0]->email ?>">
                 </div>
                 <div class="form-group">
                   <label>Alamat</label>
@@ -48,6 +48,12 @@
                 <div class="form-group">
                   <label>Telepon</label>
                   <input class="form-control" type="text" name="no_hp" value ="<?= $user[0]->no_hp ?>">
+                </div>
+
+                <div class="form-group">
+                  <label>Kode Pegawai</label>
+                  <input class="form-control" type="text" name="code" value ="<?= $user[0]->code ?>">
+                  <p class="help-block">* Inisial 2 huruf depan nama *KAPITAL*</p>
                 </div>
 
                 <div class="form-group">

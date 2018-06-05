@@ -1,7 +1,7 @@
 
 <?php if ($this->session->userdata('logged_in')['level'] == "admin") { ?>
 	<div class="container">
-		<a href="<?= base_url().'User/insert'?>" class="btn btn-primary">INPUT DATA <?php echo $judul; ?></a>
+		<a href="<?= base_url().'PembelianBahanBaku/insert'?>" class="btn btn-primary">INPUT DATA <?php echo $judul; ?></a>
 	</div>
 <?php } ?>
 
@@ -17,42 +17,26 @@
 				<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables">
 					<thead>
 						<tr>
-							<th>Nama User</th>
-							<th>Telepon</th>
-							<th>Jenis kelamin</th>
-							<th>Alamat</th>
-							<th>email</th>
-							<th>Level</th>
-							<th>Kode</th>
+							<th>Tanggal</th>
+							<th>Bahan</th>
+							<th>Supplier</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
-						foreach ($user as $val) { ?>
+						foreach ($bahan_baku as $val) { ?>
 							<tr class="odd gradeX">
-								<td><?= $val->nama_user  ?></td>
-								<td><?= $val->no_hp  ?></td>
-								<td>
-									<?php
-									if ($val->jenis_kelamin == 1) {
-										echo "Laki laki";
-									}else {
-										echo "Perempuan";
-									}
-									?>
-								</td>
-								<td><?= $val->alamat  ?></td>
-								<td><?= $val->email  ?></td>
-								<td><?= $val->level ?></td>
-								<td><?= $val->code ?></td>
+								<td><?= $val->tanggal  ?></td>
+								<td><?= $val->bahan_id_bahan  ?></td>
+								<td><?= $val->supplier_id_supplier  ?></td>
 								<td>
 									<div class="btn-group" role="group">
-	                  <a href="<?= base_url().'User/edit/'.$val->id_user ?>" class="btn btn-warning btn-sm">
+	                  <a href="<?= base_url().'PembelianBahanBaku/edit/'.$val->id_pembelian_bahan ?>" class="btn btn-warning btn-sm">
 	                    Edit
 	                  </a>
 
-	                  <a href="<?= base_url().'User/delete/'.$val->id_user ?>" class="btn btn-danger btn-sm">
+	                  <a href="<?= base_url().'PembelianBahanBaku/delete/'.$val->id_pembelian_bahan ?>" class="btn btn-danger btn-sm">
 	                    Delete
 	                  </a>
 	                </div>

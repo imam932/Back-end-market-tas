@@ -28,8 +28,8 @@
                   </div>
                 </div>
   							<div class="form-group">
-                  <label>Username</label>
-                  <input class="form-control" type="text" name="username" placeholder ="Username">
+                  <label>E-mail</label>
+                  <input class="form-control" type="text" name="email" placeholder ="E-mail">
                 </div>
                 <div class="form-group">
                   <label>Password</label>
@@ -43,6 +43,12 @@
                 <div class="form-group">
                   <label>Telepon</label>
                   <input class="form-control" type="text" name="no_hp" placeholder ="Telepon">
+                </div>
+
+                <div class="form-group">
+                  <label>Kode pegawai</label>
+                  <input class="form-control" type="text" name="code" placeholder ="Kode pegawai">
+                  <p class="help-block">* Inisial 2 huruf depan nama *KAPITAL*</p>
                 </div>
 
                 <div class="form-group">

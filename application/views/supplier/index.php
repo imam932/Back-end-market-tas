@@ -1,7 +1,7 @@
 
 <?php if ($this->session->userdata('logged_in')['level'] == "admin") { ?>
 	<div class="container">
-		<a href="<?= base_url().'User/insert'?>" class="btn btn-primary">INPUT DATA <?php echo $judul; ?></a>
+		<a href="<?= base_url().'Supplier/insert'?>" class="btn btn-primary">INPUT DATA <?php echo $judul; ?></a>
 	</div>
 <?php } ?>
 
@@ -17,42 +17,26 @@
 				<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables">
 					<thead>
 						<tr>
-							<th>Nama User</th>
-							<th>Telepon</th>
-							<th>Jenis kelamin</th>
+							<th>Nama Supplier</th>
 							<th>Alamat</th>
-							<th>email</th>
-							<th>Level</th>
-							<th>Kode</th>
+							<th>Telepon</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
-						foreach ($user as $val) { ?>
+						foreach ($supplier as $val) { ?>
 							<tr class="odd gradeX">
-								<td><?= $val->nama_user  ?></td>
-								<td><?= $val->no_hp  ?></td>
-								<td>
-									<?php
-									if ($val->jenis_kelamin == 1) {
-										echo "Laki laki";
-									}else {
-										echo "Perempuan";
-									}
-									?>
-								</td>
+								<td><?= $val->nama_supplier  ?></td>
 								<td><?= $val->alamat  ?></td>
-								<td><?= $val->email  ?></td>
-								<td><?= $val->level ?></td>
-								<td><?= $val->code ?></td>
+								<td><?= $val->telp  ?></td>
 								<td>
 									<div class="btn-group" role="group">
-	                  <a href="<?= base_url().'User/edit/'.$val->id_user ?>" class="btn btn-warning btn-sm">
+	                  <a href="<?= base_url().'Supplier/edit/'.$val->id_supplier ?>" class="btn btn-warning btn-sm">
 	                    Edit
 	                  </a>
 
-	                  <a href="<?= base_url().'User/delete/'.$val->id_user ?>" class="btn btn-danger btn-sm">
+	                  <a href="<?= base_url().'Supplier/delete/'.$val->id_supplier ?>" class="btn btn-danger btn-sm">
 	                    Delete
 	                  </a>
 	                </div>

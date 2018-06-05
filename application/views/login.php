@@ -27,8 +27,8 @@
                   </div>
                   <div class="panel-body">
                     <div class="form-group">
-                      <label for="">Username</label>
-                      <input type="text" name="username" class="form-control" placeholder="Username">
+                      <label for="">E-mail</label>
+                      <input type="text" name="email" class="form-control" placeholder="E-mail">
                     </div>
                     <div class="form-group">
                       <label for="">Password</label>

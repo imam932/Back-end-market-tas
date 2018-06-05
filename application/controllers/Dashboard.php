@@ -9,12 +9,14 @@ class Dashboard extends CI_Controller {
 		if (!$this->session->userdata('logged_in')) {
 			redirect('/');
 		}
+		$this->load->model(array('Model_user'));
 	}
 
 	public function index()
 	{
-		$data['content'] = $this->load->view('home', array(), TRUE);
-		// print_r($this->session->userdata('logged_in'));
+		$data['user'] = $this->Model_user->get();
+		$data['content'] = $this->load->view('home', $data, TRUE);
+		
 		$this->load->view('template', $data);
 	}
 

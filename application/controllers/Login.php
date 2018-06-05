@@ -18,13 +18,13 @@ class Login extends CI_Controller {
 		$result = $this->model_user->login();
 
     if ($result != FALSE) {
-      // $user = $this->model_user->select_byid($result->id_user);
 
       $session_data = array(
-        'id_user' => $result->id_user,
-        'username' => $result->username,
+        'id_user' 	=> $result->id_user,
+        'email' 		=> $result->email,
 				'nama_user' => $result->nama_user,
-				'level'			=> $result->level
+				'level'			=> $result->level,
+				'code'			=> $result->code
       );
 
       $this->session->set_userdata('logged_in', $session_data);
@@ -45,17 +45,7 @@ class Login extends CI_Controller {
 	}
 
 	function register_simpan(){
-		$data_user		= array(
-		'nama_user' 	=> $this->input->post('nama_user'),
-		'no_hp'				=> $this->input->post('no_hp'),
-		'jenis_kelamin'	=> $this->input->post('jenis_kelamin'),
-		'alamat' 			=> $this->input->post('alamat'),
-		'username' 		=> $this->input->post('username'),
-		'password' 		=> $this->input->post('password'),
-		'level' 		=> $this->input->post('level')
-	);
-		$this->db->insert('user', $data_user);
+	$this->Model_user->insert();
 		redirect('login');
-
 	}
 }

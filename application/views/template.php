@@ -94,48 +94,73 @@
               <i class="fa fa-dashboard"></i> <span>Dashboard</span></i>
             </a>
           </li>
+          <li class="header">Absensi</li>
+          <li><a href="<?= base_url() ?>Absensi/insert"><i class="fa fa-circle-o text-info"></i> Absensi Pegawai</a></li>
+          <?php if ($this->session->userdata('logged_in')['level'] == 'admin' || $this->session->userdata('logged_in')['level'] == 'hrd') { ?>
+          <li><a href="<?= base_url() ?>Absensi/kehadiran"><i class="fa fa-circle-o text-warning"></i> Kehadiran</a></li>
+          <li><a href="<?= base_url() ?>Absensi"><i class="fa fa-circle-o text-danger"></i> Data Absensi</a></li>
 
-          <li class="header">INPUT DATA</li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-files-o"></i>
-              <span>INPUT DATA</span>
-              <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-              <li>
-                <a href="<?= base_url() ?>Bahan"><i class="fa fa-circle-o"></i> Bahan</a>
-              </li>
-              <li>
-                <a href="<?= base_url() ?>Inventaris"><i class="fa fa-circle-o"></i> Inventaris</a>
-              </li>
-              <li>
-                <a href="<?= base_url() ?>Karyawan"><i class="fa fa-circle-o"></i> Karyawan</a>
-              </li>
-              <li>
-                <a href="<?= base_url() ?>User"><i class="fa fa-circle-o"></i> User</a>
-              </li>
-              <li>
-                <a href="<?= base_url() ?>Produk"><i class="fa fa-circle-o"></i> Produk</a>
-              </li>
-            </ul>
-          </li>
+           <li class="header">HRD</li>
+           <li class="treeview">
+             <a href="#">
+               <i class="fa fa-files-o"></i>
+               <span>Data</span>
+               <i class="fa fa-angle-left pull-right"></i>
+             </a>
+             <ul class="treeview-menu">
+               <li>
+                 <a href="<?= base_url() ?>Karyawan"><i class="fa fa-circle-o"></i> Karyawan</a>
+               </li>
+               <li>
+                 <a href="<?= base_url() ?>User"><i class="fa fa-circle-o"></i> User</a>
+               </li>
+             </ul>
+           </li>
 
-          <li class="header">LOGISTIK</li>
-          <li><a href="#"><i class="fa fa-circle-o text-danger"></i> Important</a></li>
-          <li><a href="#"><i class="fa fa-circle-o text-warning"></i> Warning</a></li>
-          <li><a href="#"><i class="fa fa-circle-o text-info"></i> Information</a></li>
+          <?php }
+          if ($this->session->userdata('logged_in')['level'] == 'admin' || $this->session->userdata('logged_in')['level'] == 'logistik') { ?>
+            <li class="header">LOGISTIK</li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-files-o"></i>
+                <span>Data</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li>
+                  <a href="<?= base_url() ?>Bahan"><i class="fa fa-circle-o"></i> Bahan</a>
+                </li>
+                <li>
+                  <a href="<?= base_url() ?>Inventaris"><i class="fa fa-circle-o"></i> Inventaris</a>
+                </li>
+                <li>
+                  <a href="<?= base_url() ?>Produk"><i class="fa fa-circle-o"></i> Produk</a>
+                </li>
+                <li>
+                  <a href="<?= base_url() ?>Pembeli"><i class="fa fa-circle-o"></i> Pembeli</a>
+                </li>
+                <li>
+                  <a href="<?= base_url() ?>PembelianBahanBaku"><i class="fa fa-circle-o"></i> Pembelian Bahan Baku</a>
+                </li>
+              </ul>
+            </li>
 
-          <li class="header">HRD</li>
-          <li><a href="#"><i class="fa fa-circle-o text-danger"></i> Important</a></li>
-          <li><a href="#"><i class="fa fa-circle-o text-warning"></i> Warning</a></li>
-          <li><a href="#"><i class="fa fa-circle-o text-info"></i> Information</a></li>
-
-          <li class="header">KEUANGAN</li>
-          <li><a href="#"><i class="fa fa-circle-o text-danger"></i> Important</a></li>
-          <li><a href="#"><i class="fa fa-circle-o text-warning"></i> Warning</a></li>
-          <li><a href="#"><i class="fa fa-circle-o text-info"></i> Information</a></li>
-
+          <?php }
+          if ($this->session->userdata('logged_in')['level'] == 'admin' || $this->session->userdata('logged_in')['level'] == 'akuntansi') { ?>
+            <li class="header">KEUANGAN</li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-files-o"></i>
+                <span>Data</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li>
+                  <a href="<?= base_url() ?>Produk"><i class="fa fa-circle-o"></i> Produk</a>
+                </li>
+              </ul>
+            </li>
+          <?php } ?>
         </ul>
       </section>
       <!-- /.sidebar -->
