@@ -24,7 +24,7 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link href="<?= base_url() ?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
 
-  <link href="<?= base_url() ?>assets/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+  <link href="<?= base_url() ?>assets/dist/css/dataTables.bootstrap.min.css" rel="stylesheet">
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -76,16 +76,6 @@
             <a href="#"><?= $this->session->userdata('logged_in')['level']; ?> </a>
           </div>
         </div>
-        <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
-          <div class="input-group">
-            <input type="text" name="q" class="form-control" placeholder="Search..."/>
-            <span class="input-group-btn">
-              <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-            </span>
-          </div>
-        </form>
-        <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
           <li class="header">MAIN NAVIGATION</li>
@@ -94,17 +84,15 @@
               <i class="fa fa-dashboard"></i> <span>Dashboard</span></i>
             </a>
           </li>
-          <li class="header">Absensi</li>
           <li><a href="<?= base_url() ?>Absensi/insert"><i class="fa fa-circle-o text-info"></i> Absensi Pegawai</a></li>
           <?php if ($this->session->userdata('logged_in')['level'] == 'admin' || $this->session->userdata('logged_in')['level'] == 'hrd') { ?>
           <li><a href="<?= base_url() ?>Absensi/kehadiran"><i class="fa fa-circle-o text-warning"></i> Kehadiran</a></li>
           <li><a href="<?= base_url() ?>Absensi"><i class="fa fa-circle-o text-danger"></i> Data Absensi</a></li>
 
-           <li class="header">HRD</li>
            <li class="treeview">
              <a href="#">
                <i class="fa fa-files-o"></i>
-               <span>Data</span>
+               <span>Data HRD</span>
                <i class="fa fa-angle-left pull-right"></i>
              </a>
              <ul class="treeview-menu">
@@ -119,25 +107,21 @@
 
           <?php }
           if ($this->session->userdata('logged_in')['level'] == 'admin' || $this->session->userdata('logged_in')['level'] == 'logistik') { ?>
-            <li class="header">LOGISTIK</li>
-            <li class="treeview">
+            <li class="treeview <?php ($menu == 'logistik') ? print $active : '' ?>">
               <a href="#">
                 <i class="fa fa-files-o"></i>
-                <span>Data</span>
+                <span>Data Logistik</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li>
-                  <a href="<?= base_url() ?>Bahan"><i class="fa fa-circle-o"></i> Bahan</a>
-                </li>
-                <li>
-                  <a href="<?= base_url() ?>Inventaris"><i class="fa fa-circle-o"></i> Inventaris</a>
+                <li class="<?php ($menu2 == 'bahan') ? print $active : '' ?>">
+                  <a href="<?= base_url() ?>Bahan"><i class="fa fa-circle-o"></i> Bahan Baku</a>
                 </li>
                 <li>
                   <a href="<?= base_url() ?>Produk"><i class="fa fa-circle-o"></i> Produk</a>
                 </li>
                 <li>
-                  <a href="<?= base_url() ?>Pembeli"><i class="fa fa-circle-o"></i> Pembeli</a>
+                  <a href="<?= base_url() ?>Inventaris"><i class="fa fa-circle-o"></i> Inventaris</a>
                 </li>
                 <li>
                   <a href="<?= base_url() ?>PembelianBahanBaku"><i class="fa fa-circle-o"></i> Pembelian Bahan Baku</a>
@@ -146,21 +130,37 @@
             </li>
 
           <?php }
-          if ($this->session->userdata('logged_in')['level'] == 'admin' || $this->session->userdata('logged_in')['level'] == 'akuntansi') { ?>
-            <li class="header">KEUANGAN</li>
-            <li class="treeview">
+          if ($this->session->userdata('logged_in')['level'] == 'admin' || $this->session->userdata('logged_in')['level'] == 'akuntansi') {
+            ?>
+            <li class="treeview <?php ($menu == 'keuangan') ? print $active : '' ?>">
               <a href="#">
                 <i class="fa fa-files-o"></i>
-                <span>Data</span>
+                <span>Data Keuangan</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li>
-                  <a href="<?= base_url() ?>Produk"><i class="fa fa-circle-o"></i> Produk</a>
+                <li class="<?php ($menu2 == 'modal') ? print $active : '' ?>">
+                  <a href="<?= base_url() ?>Modal"><i class="fa fa-circle-o"></i> Modal Usaha</a>
                 </li>
               </ul>
             </li>
+            <li>
+              <a href="<?= base_url() ?>Pemasukan"><i class="fa fa-circle-o text-info"></i> Pemasukan</a>
+            </li>
+            <li>
+              <a href="<?= base_url() ?>Pengeluaran"><i class="fa fa-circle-o text-warning"></i> Pengeluaran</a>
+            </li>
+            <li>
+              <a href="<?= base_url() ?>Inventaris/lap_inventaris"><i class="fa fa-circle-o text-dager"></i> Inventaris</a>
+            </li>
+            <li>
+              <a href="<?= base_url() ?>Transaksi/cashFlow"><i class="fa fa-circle-o text-dager"></i> Cash Flow</a>
+            </li>
           <?php } ?>
+          <?php if ($this->session->userdata('logged_in')['level'] == 'admin') { ?>
+          <li><a href="<?= base_url() ?>Pelanggan/insert"><i class="fa fa-circle-o text-info"></i> Data Pelanggan</a></li>
+          <li><a href="<?= base_url() ?>Pelanggan/kehadiran"><i class="fa fa-circle-o text-warning"></i> Riwayat Pembelian</a></li>
+        <?php } ?>
         </ul>
       </section>
       <!-- /.sidebar -->
@@ -189,14 +189,14 @@
       <div class="pull-right hidden-xs">
         <b>Version</b> 2.0
       </div>
-      <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+      <strong>Copyright &copy; 2018 .</strong> All rights reserved.
     </footer>
   </div><!-- ./wrapper -->
 
   <!-- jQuery 2.1.3 -->
   <script src="<?= base_url() ?>assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
   <!-- jQuery UI 1.11.2 -->
-  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
+  <script src="<?= base_url() ?>assets/plugins/jQueryUI/jquery-ui.min.js"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
   <script>
   $.widget.bridge('uibutton', $.ui.button);
@@ -206,6 +206,8 @@
   <link href="<?= base_url() ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Sparkline -->
   <script src="<?= base_url() ?>assets/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+  <!-- AdminLTE App -->
+  <script src="<?= base_url() ?>assets/dist/js/app.min.js" type="text/javascript"></script>
   <!-- daterangepicker -->
   <script src="<?= base_url() ?>assets/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
   <!-- datepicker -->
@@ -218,13 +220,11 @@
   <script src="<?= base_url() ?>assets/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
   <!-- FastClick -->
   <script src='<?= base_url() ?>assets/plugins/fastclick/fastclick.min.js'></script>
-  <!-- AdminLTE App -->
-  <script src="<?= base_url() ?>assets/dist/js/app.min.js" type="text/javascript"></script>
 
   <!-- data tables -->
   <script src="<?= base_url() ?>assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
   <script src="<?= base_url() ?>assets/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-  <script src="<?= base_url() ?>assets/vendor/datatables-responsive/dataTables.responsive.js"></script>
+  <script src="<?= base_url() ?>assets/dist/js/dataTables.bootstrap.min.js"></script>
 
   <script>
   $(document).ready(function() {

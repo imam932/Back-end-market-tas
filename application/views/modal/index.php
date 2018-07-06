@@ -1,7 +1,7 @@
 
-<?php if ($this->session->userdata('logged_in')['level'] == "admin" || $this->session->userdata('logged_in')['level'] == "logistik") { ?>
+<?php if ($this->session->userdata('logged_in')['level'] == "admin" || $this->session->userdata('logged_in')['level'] == "akuntansi") { ?>
 	<div class="container">
-		<a href="<?= base_url().'Inventaris/insert'?>" class="btn btn-primary">INPUT DATA <?php echo $judul; ?></a>
+		<a href="<?= base_url().'Modal/insert'?>" class="btn btn-primary">INPUT DATA <?php echo $judul; ?></a>
 	</div>
 <?php } ?>
 
@@ -17,28 +17,24 @@
 				<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables">
 					<thead>
 						<tr>
-							<th>Nama inventaris</th>
-							<th>Jumlah</th>
-							<th>Usia</th>
-							<th>Harga</th>
+							<th>Modal</th>
+							<th>Keterangan</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
-						foreach ($inventaris as $val) { ?>
+						foreach ($modal as $val) { ?>
 							<tr class="odd gradeX">
-								<td><?= $val->nama_inventaris  ?></td>
-								<td><?= $val->jumlah  ?></td>
-								<td><?= $val->usia_bulan  ?> Bulan</td>
-								<td>Rp. <?= $val->harga  ?></td>
+								<td><?= $val->modal  ?></td>
+								<td><?= $val->ket  ?></td>
 								<td>
 									<div class="btn-group" role="group">
-	                  <a href="<?= base_url().'Inventaris/edit/'.$val->id_inventaris ?>" class="btn btn-warning btn-sm">
+	                  <a href="<?= base_url().'Modal/edit/'.$val->id_modal ?>" class="btn btn-warning btn-sm">
 	                    Edit
 	                  </a>
 
-	                  <a href="<?= base_url().'Inventaris/delete/'.$val->id_inventaris ?>" class="btn btn-danger btn-sm">
+	                  <a href="<?= base_url().'Modal/delete/'.$val->id_modal ?>" class="btn btn-danger btn-sm">
 	                    Delete
 	                  </a>
 	                </div>

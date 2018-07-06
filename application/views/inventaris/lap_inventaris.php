@@ -1,10 +1,4 @@
 
-<?php if ($this->session->userdata('logged_in')['level'] == "admin" || $this->session->userdata('logged_in')['level'] == "logistik") { ?>
-	<div class="container">
-		<a href="<?= base_url().'Inventaris/insert'?>" class="btn btn-primary">INPUT DATA <?php echo $judul; ?></a>
-	</div>
-<?php } ?>
-
 <!-- /.row -->
 <div class="row">
 	<div class="col-lg-12">
@@ -21,7 +15,6 @@
 							<th>Jumlah</th>
 							<th>Usia</th>
 							<th>Harga</th>
-							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -32,17 +25,6 @@
 								<td><?= $val->jumlah  ?></td>
 								<td><?= $val->usia_bulan  ?> Bulan</td>
 								<td>Rp. <?= $val->harga  ?></td>
-								<td>
-									<div class="btn-group" role="group">
-	                  <a href="<?= base_url().'Inventaris/edit/'.$val->id_inventaris ?>" class="btn btn-warning btn-sm">
-	                    Edit
-	                  </a>
-
-	                  <a href="<?= base_url().'Inventaris/delete/'.$val->id_inventaris ?>" class="btn btn-danger btn-sm">
-	                    Delete
-	                  </a>
-	                </div>
-								</td>
 
 							</tr>
 						<?php } ?>

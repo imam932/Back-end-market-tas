@@ -56,5 +56,16 @@ class Inventaris extends CI_Controller
 		$this->Model_inventaris->delete($id);
 		redirect('Inventaris','refresh');
 	}
+
+	//------------Keuangan------------
+	function lap_inventaris ()
+	{
+		$data['judul'] = "Laporan Inventaris";
+		$data ['inventaris'] = $this->Model_inventaris->get();
+		$data['content'] = $this->load->view('inventaris/lap_inventaris', $data, TRUE);
+
+		$this->load->view('template', $data);
+
+	}
 }
 ?>

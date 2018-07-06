@@ -11,6 +11,9 @@ class Bahan extends CI_Controller
 
 	function index ()
 	{
+		$data['active'] = 'active';
+		$data['menu'] = 'logistik';
+		$data['menu2'] = 'bahan';
 		$data['judul'] = "Bahan";
 		$data ['bahan'] = $this->Model_bahan->get();
 		$data['content'] = $this->load->view('bahan/index', $data, TRUE);
@@ -21,6 +24,9 @@ class Bahan extends CI_Controller
 
 	public function insert()
 	{
+		$data['active'] = 'active';
+		$data['menu'] = 'logistik';
+		$data['menu2'] = 'bahan';
 		$data['judul'] = "Bahan";
 		$data['content'] = $this->load->view('bahan/new', $data, TRUE);
 
@@ -40,6 +46,9 @@ class Bahan extends CI_Controller
 	}
 
 	function edit($id){
+		$data['active'] = 'active';
+		$data['menu'] = 'logistik';
+		$data['menu2'] = 'bahan';
 		$data['judul'] = "Bahan";
 		$data['bahan'] = $this->Model_bahan->getById($id);
 		if ($_POST) {

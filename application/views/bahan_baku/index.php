@@ -1,5 +1,5 @@
 
-<?php if ($this->session->userdata('logged_in')['level'] == "admin") { ?>
+<?php if ($this->session->userdata('logged_in')['level'] == "admin" || $this->session->userdata('logged_in')['level'] == "logistik") { ?>
 	<div class="container">
 		<a href="<?= base_url().'PembelianBahanBaku/insert'?>" class="btn btn-primary">INPUT DATA <?php echo $judul; ?></a>
 	</div>

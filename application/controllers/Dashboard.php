@@ -14,9 +14,12 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
+		$data['active'] = '';
+		$data['menu'] = '';
+		$data['menu2'] = '';
 		$data['user'] = $this->Model_user->get();
 		$data['content'] = $this->load->view('home', $data, TRUE);
-		
+
 		$this->load->view('template', $data);
 	}
 
