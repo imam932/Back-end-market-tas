@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -84,22 +84,22 @@
               <i class="fa fa-dashboard"></i> <span>Dashboard</span></i>
             </a>
           </li>
-          <li><a href="<?= base_url() ?>Absensi/insert"><i class="fa fa-circle-o text-info"></i> Absensi Pegawai</a></li>
+          <li class="<?php ($menu == 'absensi') ? 'active' : '' ?>"><a href="<?= base_url() ?>Absensi/insert"><i class="fa fa-circle-o text-info"></i> Absensi Pegawai</a></li>
           <?php if ($this->session->userdata('logged_in')['level'] == 'admin' || $this->session->userdata('logged_in')['level'] == 'hrd') { ?>
           <li><a href="<?= base_url() ?>Absensi/kehadiran"><i class="fa fa-circle-o text-warning"></i> Kehadiran</a></li>
           <li><a href="<?= base_url() ?>Absensi"><i class="fa fa-circle-o text-danger"></i> Data Absensi</a></li>
 
-           <li class="treeview">
+           <li class="treeview <?php ($menu == 'hrd') ? print $active : '' ?>">
              <a href="#">
                <i class="fa fa-files-o"></i>
                <span>Data HRD</span>
                <i class="fa fa-angle-left pull-right"></i>
              </a>
              <ul class="treeview-menu">
-               <li>
+               <li <?php ($menu2 == 'karyawan') ? print $active : '' ?>>
                  <a href="<?= base_url() ?>Karyawan"><i class="fa fa-circle-o"></i> Karyawan</a>
                </li>
-               <li>
+               <li <?php ($menu2 == 'user') ? print $active : '' ?>>
                  <a href="<?= base_url() ?>User"><i class="fa fa-circle-o"></i> User</a>
                </li>
              </ul>
@@ -117,13 +117,13 @@
                 <li class="<?php ($menu2 == 'bahan') ? print $active : '' ?>">
                   <a href="<?= base_url() ?>Bahan"><i class="fa fa-circle-o"></i> Bahan Baku</a>
                 </li>
-                <li>
+                <li class="<?php ($menu2 == 'produk') ? print $active : '' ?>">
                   <a href="<?= base_url() ?>Produk"><i class="fa fa-circle-o"></i> Produk</a>
                 </li>
-                <li>
+                <li class="<?php ($menu2 == 'inventaris') ? print $active : '' ?>">
                   <a href="<?= base_url() ?>Inventaris"><i class="fa fa-circle-o"></i> Inventaris</a>
                 </li>
-                <li>
+                <li class="<?php ($menu2 == 'bahan_baku') ? print $active : '' ?>">
                   <a href="<?= base_url() ?>PembelianBahanBaku"><i class="fa fa-circle-o"></i> Pembelian Bahan Baku</a>
                 </li>
               </ul>
@@ -150,11 +150,14 @@
             <li>
               <a href="<?= base_url() ?>Pengeluaran"><i class="fa fa-circle-o text-warning"></i> Pengeluaran</a>
             </li>
-            <li>
+            <!-- <li>
               <a href="<?= base_url() ?>Inventaris/lap_inventaris"><i class="fa fa-circle-o text-dager"></i> Inventaris</a>
+            </li> -->
+            <li>
+              <a href="<?= base_url() ?>CashFlow"><i class="fa fa-circle-o text-dager"></i> Cash Flow</a>
             </li>
             <li>
-              <a href="<?= base_url() ?>Transaksi/cashFlow"><i class="fa fa-circle-o text-dager"></i> Cash Flow</a>
+              <a href="<?= base_url() ?>LabaRugi"><i class="fa fa-circle-o text-dager"></i> Laba Rugi</a>
             </li>
           <?php } ?>
           <?php if ($this->session->userdata('logged_in')['level'] == 'admin') { ?>
@@ -202,8 +205,6 @@
   $.widget.bridge('uibutton', $.ui.button);
   </script>
 
-  <!-- Bootstrap Core CSS -->
-  <link href="<?= base_url() ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Sparkline -->
   <script src="<?= base_url() ?>assets/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
   <!-- AdminLTE App -->

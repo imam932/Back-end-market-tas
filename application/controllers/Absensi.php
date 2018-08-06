@@ -11,16 +11,21 @@ class Absensi extends CI_Controller
 
 	function index ()
 	{
+		$data['active'] = 'active';
+		$data['menu'] = 'absensi';
+		$data['menu2'] = '';
 		$data['judul'] = "Absensi";
 		$data ['absensi'] = $this->Model_absensi->get();
 		$data['content'] = $this->load->view('absensi/index', $data, TRUE);
-
+var_dump($data['menu']);
 		$this->load->view('template', $data);
 	}
 
 	public function insert()
 	{
 		$data['judul'] = "Absensi";
+		$data['menu'] = 'absensi';
+		$data['menu2'] = '';
 		$data['nama'] = $this->session->userdata('logged_in')['nama_user'];
 
 		$data['content'] = $this->load->view('absensi/new', $data, TRUE);
@@ -53,6 +58,8 @@ class Absensi extends CI_Controller
 	}
 
 	function kehadiran(){
+		$data['menu'] = 'absensi';
+		$data['menu2'] = '';
 			$data['judul'] = "Absensi kehadiran";
 			$data['kehadiran'] = $this->Model_absensi->get_absen();
 			$data['content'] = $this->load->view('absensi/kehadiran', $data, TRUE);

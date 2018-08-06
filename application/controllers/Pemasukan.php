@@ -11,6 +11,9 @@ class Pemasukan extends CI_Controller
 
 	function index ()
 	{
+		$data['active'] = 'active';
+		$data['menu'] = 'keuangan';
+		$data['menu2'] = 'pemasukan';
 		$data['judul'] = "Pemasukan";
 		$data ['pemasukan'] = $this->Model_transaksi->get();
 		$data['content'] = $this->load->view('pemasukan/index', $data, TRUE);

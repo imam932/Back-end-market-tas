@@ -11,6 +11,9 @@ class Pengeluaran extends CI_Controller
 
 	function index ()
 	{
+		$data['active'] = 'active';
+		$data['menu'] = 'keuangan';
+		$data['menu2'] = 'pengeluaran';
 		$data['judul'] = "Pengeluaran";
 		$data ['pengeluaran'] = $this->Model_pengeluaran->get();
 		$data['content'] = $this->load->view('pengeluaran/index', $data, TRUE);
@@ -21,6 +24,9 @@ class Pengeluaran extends CI_Controller
 
 	public function insert()
 	{
+		$data['active'] = 'active';
+		$data['menu'] = 'keuangan';
+		$data['menu2'] = 'pengeluaran';
 		$data['judul'] = "Pengeluaran";
 		$data['content'] = $this->load->view('pengeluaran/new', $data, TRUE);
 

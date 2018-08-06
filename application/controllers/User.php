@@ -11,6 +11,9 @@ class User extends CI_Controller
 
 	function index ()
 	{
+		$data['active'] = 'active';
+		$data['menu'] = 'hrd';
+		$data['menu2'] = 'user';
 		$data['judul'] = "User";
 		$data ['user'] = $this->Model_user->get();
 		$data['content'] = $this->load->view('user/index', $data, TRUE);
@@ -21,6 +24,9 @@ class User extends CI_Controller
 
 	public function insert()
 	{
+		$data['active'] = 'active';
+		$data['menu'] = 'hrd';
+		$data['menu2'] = 'user';
 		$data['judul'] = "User";
 		$data['content'] = $this->load->view('user/new', $data, TRUE);
 
@@ -39,7 +45,11 @@ class User extends CI_Controller
 
 	}
 
-	function edit($id){
+	function edit($id)
+	{
+		$data['active'] = 'active';
+		$data['menu'] = 'hrd';
+		$data['menu2'] = 'user';
 		$data['judul'] = "User";
 		$data['user'] = $this->Model_user->getById($id);
 		if ($_POST) {

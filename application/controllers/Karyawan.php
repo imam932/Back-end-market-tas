@@ -11,6 +11,9 @@ class Karyawan extends CI_Controller
 
 	function index ()
 	{
+		$data['active'] = 'active';
+		$data['menu'] = 'hrd';
+		$data['menu2'] = 'karyawan';
 		$data['judul'] = "Karyawan";
 		$data ['karyawan'] = $this->Model_karyawan->get();
 		$data['content'] = $this->load->view('karyawan/index', $data, TRUE);
@@ -21,6 +24,9 @@ class Karyawan extends CI_Controller
 
 	public function insert()
 	{
+		$data['active'] = 'active';
+		$data['menu'] = 'hrd';
+		$data['menu2'] = 'karyawan';
 		$data['judul'] = "Karyawan";
 		$data['content'] = $this->load->view('karyawan/new', $data, TRUE);
 
@@ -39,7 +45,11 @@ class Karyawan extends CI_Controller
 
 	}
 
-	function edit($id){
+	function edit($id)
+	{
+		$data['active'] = 'active';
+		$data['menu'] = 'hrd';
+		$data['menu2'] = 'karyawan';
 		$data['judul'] = "Karyawan";
 		$data['karyawan'] = $this->Model_karyawan->getById($id);
 		if ($_POST) {

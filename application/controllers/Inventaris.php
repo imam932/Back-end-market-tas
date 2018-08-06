@@ -11,6 +11,9 @@ class Inventaris extends CI_Controller
 
 	function index ()
 	{
+		$data['active'] = 'active';
+		$data['menu'] = 'logistik';
+		$data['menu2'] = 'inventaris';
 		$data['judul'] = "Inventaris";
 		$data ['inventaris'] = $this->Model_inventaris->get();
 		$data['content'] = $this->load->view('inventaris/index', $data, TRUE);
@@ -21,6 +24,9 @@ class Inventaris extends CI_Controller
 
 	public function insert()
 	{
+		$data['active'] = 'active';
+		$data['menu'] = 'logistik';
+		$data['menu2'] = 'inventaris';
 		$data['judul'] = "Inventaris";
 		$data['content'] = $this->load->view('inventaris/new', $data, TRUE);
 
@@ -36,10 +42,13 @@ class Inventaris extends CI_Controller
 			echo "<script type='text/javascript'> alert('Form Insert Error !!! Try Again') </script>";
 			redirect('Inventaris/insert','refresh');
 		}
-
 	}
 
-	function edit($id){
+	function edit($id)
+	{
+		$data['active'] = 'active';
+		$data['menu'] = 'logistik';
+		$data['menu2'] = 'inventaris';
 		$data['judul'] = "Inventaris";
 		$data['inventaris'] = $this->Model_inventaris->getById($id);
 		if ($_POST) {

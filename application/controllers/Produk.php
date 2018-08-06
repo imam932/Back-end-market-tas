@@ -9,8 +9,11 @@ class Produk extends CI_Controller
 	}
 
 
-	function index ()
+	function index()
 	{
+		$data['active'] = 'active';
+		$data['menu'] = 'logistik';
+		$data['menu2'] = 'produk';
 		$data['judul'] = "Produk";
 		$data ['produk'] = $this->Model_produk->get();
 		$data['content'] = $this->load->view('produk/index', $data, TRUE);
@@ -21,6 +24,9 @@ class Produk extends CI_Controller
 
 	public function insert()
 	{
+		$data['active'] = 'active';
+		$data['menu'] = 'logistik';
+		$data['menu2'] = 'produk';
 		$data['judul'] = "Produk";
 		$data['content'] = $this->load->view('produk/new', $data, TRUE);
 
@@ -39,7 +45,11 @@ class Produk extends CI_Controller
 
 	}
 
-	function edit($id){
+	function edit($id)
+	{
+		$data['active'] = 'active';
+		$data['menu'] = 'logistik';
+		$data['menu2'] = 'produk';
 		$data['judul'] = "Produk";
 		$data['produk'] = $this->Model_produk->getById($id);
 		if ($_POST) {
@@ -55,6 +65,17 @@ class Produk extends CI_Controller
 	public function delete($id){
 		$this->Model_produk->delete($id);
 		redirect('Produk','refresh');
+	}
+
+// user-----------------------------------------------------------------
+	function produk()
+	{
+		$data['judul'] = "Produk";
+		$data ['produk'] = $this->Model_produk->get();
+		$data['content'] = $this->load->view('public/produk', $data, TRUE);
+
+		$this->load->view('template2', $data);
+
 	}
 }
 ?>

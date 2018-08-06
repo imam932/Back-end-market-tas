@@ -11,6 +11,9 @@ class PembelianBahanBaku extends CI_Controller
 
 	function index ()
 	{
+		$data['active'] = 'active';
+		$data['menu'] = 'logistik';
+		$data['menu2'] = 'bahan_baku';
 		$data['judul'] = "Pembelian Bahan Baku";
 		$data ['bahan_baku'] = $this->Model_pembelian_bahan_baku->get();
 		$data['content'] = $this->load->view('bahan_baku/index', $data, TRUE);
@@ -21,6 +24,9 @@ class PembelianBahanBaku extends CI_Controller
 
 	public function insert()
 	{
+		$data['active'] = 'active';
+		$data['menu'] = 'logistik';
+		$data['menu2'] = 'bahan_baku';
 		$data['judul'] = "Pembelian Bahan Baku";
 		$data['content'] = $this->load->view('bahan_baku/new', $data, TRUE);
 
@@ -39,7 +45,11 @@ class PembelianBahanBaku extends CI_Controller
 
 	}
 
-	function edit($id){
+	function edit($id)
+	{
+		$data['active'] = 'active';
+		$data['menu'] = 'logistik';
+		$data['menu2'] = 'bahan_baku';
 		$data['judul'] = "Pembelian Bahan Baku";
 		$data['bahan_baku'] = $this->Model_pembelian_bahan_baku->getById($id);
 		if ($_POST) {

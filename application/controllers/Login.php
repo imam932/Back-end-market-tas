@@ -17,22 +17,26 @@ class Login extends CI_Controller {
 	public function cekLogin(){
 		$result = $this->model_user->login();
 
-    if ($result != FALSE) {
+		if ($result != FALSE) {
 
-      $session_data = array(
-        'id_user' 	=> $result->id_user,
-        'email' 		=> $result->email,
+			$session_data = array(
+				'id_user' 	=> $result->id_user,
+				'email' 		=> $result->email,
 				'nama_user' => $result->nama_user,
 				'level'			=> $result->level,
 				'code'			=> $result->code
-      );
+			);
 
-      $this->session->set_userdata('logged_in', $session_data);
+			$this->session->set_userdata('logged_in', $session_data);
 
-      redirect('Dashboard');
-    }else {
-				redirect('/','refresh');
-    }
+			if ($this->session->userdata('logged_in')['level'] == 'user') {
+				redirect('Home');
+			}else {
+				redirect('Dashboard');
+			}
+		}else {
+			redirect('/','refresh');
+		}
 	}
 
 	public function process_logout(){
@@ -45,7 +49,7 @@ class Login extends CI_Controller {
 	}
 
 	function register_simpan(){
-	$this->Model_user->insert();
+		$this->Model_user->insert();
 		redirect('login');
 	}
 }

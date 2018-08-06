@@ -8,6 +8,17 @@ class Model_produk extends CI_Model
 		return $produk->result();
 	}
 
+	function getRows()
+	{
+		$query = $this->db->get('produk');
+
+		if ($query->result() == 1) {
+			return result();
+		}else {
+			return array();
+		}
+	}
+
 	public function getById($id){
     $this->db->where('id_produk', $id);
     $query = $this->db->get('produk');
